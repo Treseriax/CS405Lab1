@@ -77,10 +77,10 @@ const RADIUS = 0.35;
 }
 
 @fragment fn fs_main(in : VSOut) -> @location(0) vec4f {
-  let d = clamp(length(in.local), 0.0, 1.0);   // 0 = merkez, 1 = köşe
-  let center = vec3f(1.0, 0.95, 0.55);          // sarı
-  let mid    = vec3f(1.0, 0.35, 0.25);          // turuncu-kırmızı
-  let edge   = vec3f(0.45, 0.1, 0.65);          // mor
+  let d = clamp(length(in.local), 0.0, 1.0);   
+  let center = vec3f(1.0, 0.95, 0.55);          
+  let mid    = vec3f(1.0, 0.35, 0.25);          
+  let edge   = vec3f(0.45, 0.1, 0.65);          
   var col = mix(center, mid, smoothstep(0.0, 0.6, d));
   col = mix(col, edge, smoothstep(0.5, 1.0, d));
   return vec4f(col, 1.0);
@@ -110,7 +110,7 @@ const mouse = { x: 0, y: 0 };
 canvas.addEventListener('pointermove', (e) => {
   const r = canvas.getBoundingClientRect();
   mouse.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-  mouse.y = -(((e.clientY - r.top) / r.height) * 2 - 1); // clip space'te y yukarı
+  mouse.y = -(((e.clientY - r.top) / r.height) * 2 - 1); 
 });
 
 
